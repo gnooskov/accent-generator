@@ -74,6 +74,7 @@ body {
   font-size: 3vh;
   opacity: 0;
   visibility: hidden;
+  transition: .3s;
 }
 
 #copyBlock {
@@ -109,15 +110,30 @@ body {
   cursor: default;
 }
 
-.copied--animated {
-  animation: copied 2s;
+#copied.copied--animated {
+  bottom: 10vh;
+  opacity: 1;
+  visibility: visible;
+  animation: copied 1.7s;
 }
 
 @keyframes cursorFlashing {
-  0% { opacity: 0; box-shadow: 0 0 0 0 rgba(0,0,0,0); }
-  20% { opacity: 1; box-shadow: 0 0 15px 0 rgba(0,0,0,0.4); }
-  25% { opacity: 1; box-shadow: 0 0 40px 0 rgba(0,0,0,0.6); }
-  100% { opacity: 0; box-shadow: 0 0 0 0 rgba(0,0,0,0); }
+  0% {
+    opacity: 0;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+  20% {
+    opacity: 1;
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.4);
+  }
+  25% {
+    opacity: 1;
+    box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.6);
+  }
+  100% {
+    opacity: 0;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
 }
 
 @keyframes copied {
@@ -130,13 +146,9 @@ body {
     opacity: 1;
     visibility: visible;
   }
-  90% {
+  100% {
     bottom: 10vh;
     opacity: 1;
     visibility: visible;
-  }
-  100% {
-    bottom: 5vh;
-    opacity: 0;
   }
 }
