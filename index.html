@@ -4,13 +4,29 @@
     <title>Accent symbol generator</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="style.css" type="text/css" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
     <script defer src="accent-generator.js"></script>
   </head>
   <body>
     <span id="display"></span>
+    
+    <div id="copyBlock">
+      <button id="copy" class="copy--disabled">Copy to clipboard</button>
+      <div id="copyComment">You can just use Ctrl/Cmd+C to copy symbol, or you may click this button</div>
+    </div>
+
     <input id="input" maxlength="1" />
     <div class="decorations">
       <div class="vignette"></div>
     </div>
+    <div id="copied"></div>
   </body>
 </html>

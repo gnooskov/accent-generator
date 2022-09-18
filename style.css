@@ -2,28 +2,33 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
+  color: #333;
 }
 
 body {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   font-family: 'Arial', sans-serif;
 }
 
 #display {
+  flex-shrink: 0;
   position: relative;
   font-size: 60vh;
-  min-height: 60vh;
+  height: 70vh;
+  margin-bottom: 10vh;
   text-shadow: 0 1vh 0 rgba(0, 0, 0, 0.5);
+  color: #000;
 }
 
 #display::after {
   content: '';
   display: inline-block;
   position: absolute;
-  top: 20px;
-  bottom: 20px;
+  top: 5vh;
+  bottom: 5vh;
   border-right: 1vw solid #000;
   animation: cursorFlashing 2s ease-in-out infinite;
 }
@@ -33,6 +38,7 @@ body {
   top: 0;
   left: 0;
   opacity: 0;
+  pointer-events: none;
 }
 
 .decorations {
@@ -56,9 +62,81 @@ body {
   pointer-events: none;
 }
 
+#copied {
+  position: absolute;
+  right: 10vh;
+  bottom: 5vh;
+  padding: 1vh 2vh;
+  background-color: #fefefe;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 2vh;
+  color: rgb(11, 167, 37);
+  font-size: 3vh;
+  opacity: 0;
+  visibility: hidden;
+}
+
+#copyBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#copy {
+  position: relative;
+  padding: 1vh 2vh;
+  margin-bottom: 3vh;
+  background-color: #fff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  border: 0;
+  border-radius: 2vh;
+  color: #333;
+  font-size: 3vh;
+  cursor: pointer;
+}
+
+#copy:active:not(.copy--disabled) {
+  top: 2px;
+}
+
+#copyComment {
+
+}
+
+#copy.copy--disabled {
+  background-color: #ddd;
+  color: #eee;
+  cursor: default;
+}
+
+.copied--animated {
+  animation: copied 2s;
+}
+
 @keyframes cursorFlashing {
   0% { opacity: 0; box-shadow: 0 0 0 0 rgba(0,0,0,0); }
   20% { opacity: 1; box-shadow: 0 0 15px 0 rgba(0,0,0,0.4); }
   25% { opacity: 1; box-shadow: 0 0 40px 0 rgba(0,0,0,0.6); }
   100% { opacity: 0; box-shadow: 0 0 0 0 rgba(0,0,0,0); }
+}
+
+@keyframes copied {
+  0% {
+    bottom: 5vh;
+    opacity: 0;
+  }
+  30% {
+    bottom: 10vh;
+    opacity: 1;
+    visibility: visible;
+  }
+  90% {
+    bottom: 10vh;
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    bottom: 5vh;
+    opacity: 0;
+  }
 }
